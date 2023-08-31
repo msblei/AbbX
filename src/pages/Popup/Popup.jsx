@@ -19,7 +19,7 @@ const Popup = () => {
     var activeTab = tabs[0];
     chrome.tabs.sendMessage(
       activeTab.id,
-      { message: 'getSelectedText' },
+      { action: 'getSelectedText' },
       function (response) {
         console.log('get answer', response);
         setSelectedText(response);
@@ -54,7 +54,7 @@ const Popup = () => {
           },
           {
             role: 'user',
-            content: `List all abbreviations in the following sentence and explain them: ${selectedText}.`,
+            content: `List all abbreviations in the following sentence and explain them. Give your answer in the following format: "{Abbreviation} - {Written out} - {Explanation}\n"\n ${selectedText}.`,
           },
         ],
       });
@@ -102,7 +102,12 @@ const Popup = () => {
               <CircularProgress />
             ) : (
               <Typography variant="body2" gutterBottom color="black">
-                {response}
+                {response.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
               </Typography>
             )}
           </Paper>
