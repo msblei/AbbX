@@ -4,6 +4,10 @@
 
 <img src="assets/AbbX_example.gif"/>
 
+Abbreviations or acronyms are ambiguous and often require the context of the full sentence or paragraph to be understood.
+
+This extension allows you to easily look up abbreviations without leaving the tab and interrupting your workflow. You specify the context via the text selection and thus get more precise results.
+
 ## Features
 
 This is a basic Chrome Extension that takes the selected text and asks ChatGPT to resolve the abbreviations. Handy if you want to quickly look up an abbreviation without leaving your current window.
